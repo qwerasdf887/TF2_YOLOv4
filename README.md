@@ -6,7 +6,7 @@ Tensorflow 2.2版本的YOLOv4，幾乎個function都有相對應的註解。
 
 Loss function : CIOU
 
-##環境 environment 
+## 環境 environment 
 
 1. Tensorflow 2.2
 2. Python 3.5~3.7
@@ -16,7 +16,7 @@ Loss function : CIOU
 
 ALexeyAB : [download weight](https://drive.google.com/open?id=1cewMfusmPjYWbrnuJRuKhPMwRe_b9PaT)
 
-##YOLOv4架構如下
+## YOLOv4架構如下
 
 <p align="center">
     <img width="100%" src="https://github.com/qwerasdf887/TF2_YOLOv4/blob/master/YOLOv4.png" style="max-width:100%;">
@@ -24,13 +24,13 @@ ALexeyAB : [download weight](https://drive.google.com/open?id=1cewMfusmPjYWbrnuJ
 </p>
 
 
-##Predict Img:
+## Predict Img:
 
 ```bashrc
 python predict.py
 ```
 
-###Result
+### Result
 
 <p align="center">
     <img width="100%" src="https://github.com/qwerasdf887/TF2_YOLOv4/blob/master/predict.jpg" style="max-width:100%;">
@@ -38,7 +38,7 @@ python predict.py
 </p>
 
 
-##Training
+## Training
 
 需修改train.py。
 使用[labelImg](https://github.com/tzutalin/labelImg) 生成的xml檔，並且放入標籤位置即可。
