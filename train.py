@@ -28,7 +28,6 @@ train_default = {'anchors': [[12, 16], [19, 36], [40, 28],
                  'use_pretrain': True,
                  'drop_rate' : 0.2,
                  'block_size' : 3
-              }
                 }
 
 #default aug args:
