@@ -98,9 +98,6 @@ def horizontal_flip(image, box_loc=None, **kwargs):
                 x_min, x_max = i[0], i[2]
                 i[0] = w - x_max
                 i[2] = w - x_min
-                if i[4] == 0 or i[4] == 2:
-                    i[4] = (i[4] + 2) % 4
-
         return cv2.flip(image, 1), box_loc
 
 #垂直翻轉
@@ -120,8 +117,6 @@ def vertical_flip(image, box_loc=None, **kwargs):
                 y_min, y_max = i[1], i[3]
                 i[1] = h - y_max
                 i[3] = h - y_min
-                if i[4] == 1 or i[4] == 3:
-                    i[4] = (i[4] + 2) % 4
         return cv2.flip(image, 0), box_loc
 
 #旋轉-n~n度
