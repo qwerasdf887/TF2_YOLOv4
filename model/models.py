@@ -219,8 +219,8 @@ def creat_CSPYOLO(**kwargs):
     input_shape = (kwargs['image_shape'][0], kwargs['image_shape'][1], 3)
     #類別總數
     num_classes = kwargs['num_classes']
-    #將anchors 歸一化
-    anchors = np.array(kwargs['anchors'])# / kwargs['image_shape'][::-1]
+    #將anchors
+    anchors = np.array(kwargs['anchors'])
     anchors_mask = kwargs['anchors_mask']
     #每一層輸出的anchors數量
     anc_pre_l = len(anchors) // 3
