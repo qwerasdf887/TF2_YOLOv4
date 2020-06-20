@@ -1,16 +1,17 @@
-# TF2_YOLOv4
-
-Tensorflow 2.2版本的YOLOv4，幾乎個function都有相對應的註解。
-
-若有任何問題歡迎討論，Model layer加入Drop Block layer。
-
+# TF2_YOLOv4  
+Tensorflow 2.2版本的YOLOv4，幾乎個function都有相對應的註解。  
+若有任何問題歡迎討論，Model layer加入Drop Block layer。  
 Loss function : CIOU
 
 ## 環境 environment 
 
 1. Tensorflow 2.2
-2. Python 3.5~3.7
-3. OpenCV 3~4
+2. tensorflow_addons (moving average opt)
+3. Python 3.5~3.7
+4. OpenCV 3~4
+
+## Dropblock  
+`train_default`下的`dropblock: [False, True, True, True, True]`分別對應每個大的residual block後面增加。  
 
 ##Weights
 

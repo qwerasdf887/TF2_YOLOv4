@@ -42,7 +42,7 @@ i.e., A = A / survival prob
 '''
 class DropBlock(tf.keras.layers.Layer):
     #drop機率、block size
-    def __init__(self, drop_rate=0.2, block_size=3, **kwargs):
+    def __init__(self, drop_rate=0.1, block_size=7, **kwargs):
         super(DropBlock, self).__init__(**kwargs)
         self.rate = drop_rate
         self.block_size = block_size
@@ -105,8 +105,6 @@ def unit_conv(tensor, num_filters, k_size, strides, act, use_bn=True, drop_rate=
             output = Mish()(output)
         if act == 'leaky':
             output = tf.keras.layers.LeakyReLU(0.1)(output)
-
-        output = DropBlock(drop_rate=drop_rate, block_size=block_size)(output)
         
     else:
         output = tf.keras.layers.Conv2D(filters=num_filters,
@@ -232,10 +230,20 @@ def creat_CSPYOLO(**kwargs):
     ######CSPDarkBackbone#####
     x = unit_conv(tensor=input_layer, num_filters=32, k_size=3, strides=1, act='mish', drop_rate=drop_rate, block_size=block_size)
     block_1_f = CSP_Block(x, num_filters=64, num_repeat=1, half=False, drop_rate=drop_rate, block_size=block_size)
+    if kwargs['dropblock'][0]:
+        block_1_f = DropBlock()(block_1_f)
     block_2_f = CSP_Block(block_1_f, num_filters=128, num_repeat=2, drop_rate=drop_rate, block_size=block_size)
+    if kwargs['dropblock'][1]:
+        block_2_f = DropBlock()(block_2_f)
     block_3_f = CSP_Block(block_2_f, num_filters=256, num_repeat=8, drop_rate=drop_rate, block_size=block_size)
+    if kwargs['dropblock'][2]:
+        block_3_f = DropBlock()(block_3_f)
     block_4_f = CSP_Block(block_3_f, num_filters=512, num_repeat=8, drop_rate=drop_rate, block_size=block_size)
+    if kwargs['dropblock'][3]:
+        block_4_f = DropBlock()(block_4_f)
     block_5_f = CSP_Block(block_4_f, num_filters=1024, num_repeat=4, drop_rate=drop_rate, block_size=block_size)
+    if kwargs['dropblock'][4]:
+        block_5_f = DropBlock()(block_5_f)
 
     ######CSPDarkneck#####
     neck_5 = Neck_Block(tensor=block_5_f, num_layers=3, num_filters=512, drop_rate=drop_rate, block_size=block_size)

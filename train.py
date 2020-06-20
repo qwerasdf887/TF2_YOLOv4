@@ -20,6 +20,7 @@ train_default = {'anchors': [[12, 16], [19, 36], [40, 28],
                             [36, 75], [76, 55], [72, 146],
                             [142, 110], [192, 243], [459, 401]],
                  'anchors_mask': [[0, 1, 2], [3, 4, 5], [6, 7, 8]],
+                 'dropblock': [False, True, True, True, True], #分別對應每個residual block後是否加入dropblock
                  'image_shape': (608, 608),
                  'num_classes': 5,
                  'score_threshold': 0.6,
@@ -89,6 +90,8 @@ if __name__ == "__main__":
         custom = False if train_default['num_classes'] == 80 else True
         load_weights(model, './yolov4.weights', custom_cls=custom)
     
+    model.summary()
+    
     annotation_path = 'path'
     log_dir = 'path'
     classes_path = 'path'
@@ -105,7 +108,6 @@ if __name__ == "__main__":
 
     opt = tf.keras.optimizers.Adam(learning_rate=0.001)
     opt = tfa.optimizers.MovingAverage(opt)
-    #model.summary()
     model.compile(optimizer=opt, loss=yolo_loss)
     model.fit(img_gen(xmls, annotation_path, class_name, default_aug, train_default),
               steps_per_epoch= np.ceil(total_train / train_default['batch_size']),
