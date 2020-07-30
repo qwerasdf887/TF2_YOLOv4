@@ -13,7 +13,7 @@ Loss function : CIOU
 ## Dropblock  
 `train_default`下的`dropblock: [False, True, True, True, True]`分別對應每個大的residual block後面增加。  
 
-##Weights
+## Weights
 
 ALexeyAB : [download weight](https://drive.google.com/open?id=1cewMfusmPjYWbrnuJRuKhPMwRe_b9PaT)
 

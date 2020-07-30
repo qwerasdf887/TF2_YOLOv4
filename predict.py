@@ -46,6 +46,7 @@ if __name__ == "__main__":
                            [36, 75], [76, 55], [72, 146],
                            [142, 110], [192, 243], [459, 401]],
                'anchors_mask': [[0, 1, 2], [3, 4, 5], [6, 7, 8]],
+               'dropblock': [False, False, False, False, False], #分別對應每個residual block後是否加入dropblock
                'image_shape': (608, 608),
                'num_classes': 80,
                'score_threshold': 0.6,
