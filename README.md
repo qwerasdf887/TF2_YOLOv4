@@ -10,6 +10,10 @@ Loss function : CIOU
 3. Python 3.5~3.7
 4. OpenCV 3~4
 
+## Tiny version
+
+[Tiny-YOLOv4](https://github.com/qwerasdf887/TF2_TinyYOLOv4)
+
 ## Dropblock  
 `train_default`下的`dropblock: [False, True, True, True, True]`分別對應每個大的residual block後面增加。  
 
